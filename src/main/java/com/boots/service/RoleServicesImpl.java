@@ -11,37 +11,38 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
 @Service
 public class RoleServicesImpl implements RoleServices {
-    private final RoleRepository roleRepository;
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
+    private final RoleRepository roleRepository;
 
-    public RoleServicesImpl(RoleRepository roleRepository) {
+    public RoleServicesImpl(RoleRepository roleRepository, EntityManager entityManager) {
         this.roleRepository = roleRepository;
+        this.entityManager = entityManager;
     }
 
     @Override
-    @Transactional
     public List<Role> getAllRoles() {
         return roleRepository.findAll();
     }
 
-    @Override
-    @Transactional
+
     public void addRole(Role role) {
         roleRepository.save(role);
     }
 
     @Override
-    @Transactional
     public Role getRoleById(Long id) {
-        return roleRepository.getById(id);
+        return roleRepository.getOne(id);
     }
 
     @Override
-    @Transactional
     public Set<Role> findAllRoleId(List<Long> ids) {
-        return roleRepository.findAllId(ids);
+        String jpql = "SELECT r FROM Role r WHERE r.id IN :ids";
+        return new HashSet<>(entityManager.createQuery(jpql, Role.class)
+                .setParameter("ids", ids)
+                .getResultList());
     }
 }

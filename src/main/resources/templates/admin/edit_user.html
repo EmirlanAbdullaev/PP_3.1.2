@@ -15,9 +15,7 @@
         <label for="firstNameUpdate">Username</label>
         <input type="text" th:field="*{username}" id="userName" placeholder="Username">
         <label for="firstNameUpdate">Password</label>
-        <input type="text" th:field="*{password}" id="password" placeholder="Password">
-<!--        <label for="firstNameUpdate">Roles</label>-->
-<!--        <input type="text" th:field="*{roles}" id="roles" placeholder="Roles">-->
+        <input type="password" th:field="*{password}" required id="password" placeholder="Password">
         <label>Select role:
             <div class="checkbox-container"
                  th:each="role : ${allRoles}">
