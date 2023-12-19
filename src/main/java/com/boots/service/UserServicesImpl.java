@@ -12,13 +12,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.boots.entity.User;
 import com.boots.repository.UserRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.List;
 
+@Transactional(readOnly = true)
 @Service
 public class UserServicesImpl implements UserServices {
 
@@ -47,6 +48,7 @@ public class UserServicesImpl implements UserServices {
         return userRepository.findAll();
     }
 
+    @Transactional
     @Override
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -62,7 +64,16 @@ public class UserServicesImpl implements UserServices {
     public User getUser(long id) {
         return userRepository.getOne(id);
     }
+    @Transactional
+    @Override
+    public void updateUser(User user){
+        if (null!=userRepository.findByUsername(user.getUsername())){
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            userRepository.save(user);
+        }
+    }
 
+    @Transactional
     @Override
     public void deleteUser(long id) {
         userRepository.deleteById(id);

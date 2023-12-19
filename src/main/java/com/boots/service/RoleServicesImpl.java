@@ -3,15 +3,15 @@ package com.boots.service;
 import com.boots.entity.Role;
 import com.boots.repository.RoleRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
+@Transactional(readOnly = true)
 @Service
 public class RoleServicesImpl implements RoleServices {
     @PersistenceContext
@@ -28,7 +28,7 @@ public class RoleServicesImpl implements RoleServices {
         return roleRepository.findAll();
     }
 
-
+    @Transactional
     public void addRole(Role role) {
         roleRepository.save(role);
     }

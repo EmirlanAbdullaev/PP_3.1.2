@@ -14,4 +14,5 @@ public interface UserServices extends UserDetailsService {
     public User getUser(long id);
 
     public void deleteUser(long id);
+    public void updateUser(User user);
 }
