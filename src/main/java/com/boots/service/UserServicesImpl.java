@@ -64,10 +64,11 @@ public class UserServicesImpl implements UserServices {
     public User getUser(long id) {
         return userRepository.getOne(id);
     }
+
     @Transactional
     @Override
-    public void updateUser(User user){
-        if (null!=userRepository.findByUsername(user.getUsername())){
+    public void updateUser(User user) {
+        if (null != userRepository.findByUsername(user.getUsername())) {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             userRepository.save(user);
         }

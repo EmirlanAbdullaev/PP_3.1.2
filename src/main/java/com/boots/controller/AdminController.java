@@ -41,11 +41,11 @@ public class AdminController {
     public String add(@Valid @ModelAttribute("user") User user, BindingResult bindingResult
             , Model model, @RequestParam(value = "ids", required = false) List<Long> ids) {
 
-            Set<Role> assignedRole = roleServices.findAllRoleId(ids);
-            user.setRoles(assignedRole);
+        Set<Role> assignedRole = roleServices.findAllRoleId(ids);
+        user.setRoles(assignedRole);
 
-            userServices.saveUser(user);
-            return "redirect:/admin";
+        userServices.updateUser(user);
+        return "redirect:/admin";
 
 
     }
@@ -67,9 +67,9 @@ public class AdminController {
     public String update(@Valid @ModelAttribute("user") User user, BindingResult bindingResult
             , Model model, @RequestParam(value = "ids", required = false) List<Long> ids) {
 
-            Set<Role> assignedRole = roleServices.findAllRoleId(ids);
-            user.setRoles(assignedRole);
-            userServices.saveUser(user);
-            return "redirect:/admin";
+        Set<Role> assignedRole = roleServices.findAllRoleId(ids);
+        user.setRoles(assignedRole);
+        userServices.saveUser(user);
+        return "redirect:/admin";
     }
 }
