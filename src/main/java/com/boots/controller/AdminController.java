@@ -44,7 +44,7 @@ public class AdminController {
         Set<Role> assignedRole = roleServices.findAllRoleId(ids);
         user.setRoles(assignedRole);
 
-        userServices.updateUser(user);
+        userServices.saveUser(user);
         return "redirect:/admin";
 
 
@@ -69,7 +69,7 @@ public class AdminController {
 
         Set<Role> assignedRole = roleServices.findAllRoleId(ids);
         user.setRoles(assignedRole);
-        userServices.saveUser(user);
+        userServices.updateUser(user);
         return "redirect:/admin";
     }
 }
