@@ -18,6 +18,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @Transactional(readOnly = true)
 @Service
@@ -42,17 +43,17 @@ public class UserServicesImpl implements UserServices {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username);
     }
+    @Override
+    @Transactional
+    public void addOrUpdateUser(User user, Set<Role> roleSet) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setRoles(roleSet);
+        userRepository.save(user);//auto check
+    }
 
     @Override
     public List<User> getUsersList() {
         return userRepository.findAll();
-    }
-
-    @Transactional
-    @Override
-    public void saveUser(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
     }
 
     @Override
@@ -63,15 +64,6 @@ public class UserServicesImpl implements UserServices {
     @Override
     public User getUser(long id) {
         return userRepository.getOne(id);
-    }
-
-    @Transactional
-    @Override
-    public void updateUser(User user) {
-        if (null != userRepository.findByUsername(user.getUsername())) {
-            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-            userRepository.save(user);
-        }
     }
 
     @Transactional

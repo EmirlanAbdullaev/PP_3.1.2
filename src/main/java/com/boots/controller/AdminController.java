@@ -4,14 +4,19 @@ import com.boots.entity.Role;
 import com.boots.entity.User;
 import com.boots.service.RoleServices;
 import com.boots.service.UserServices;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/admin")
@@ -24,52 +29,37 @@ public class AdminController {
         this.userServices = userService;
     }
 
-    @GetMapping
-    public String getUsers(Model model) {
+    @GetMapping()
+    public String showAllUsers(Model model, Principal principal) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        List<String> roles = authentication.getAuthorities()
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
+
         model.addAttribute("users", userServices.getUsersList());
-        return "admin/admin";
+        model.addAttribute("userRoles", roles);
+        model.addAttribute("userAuth", userServices.getUser(principal.getName()));
+        model.addAttribute("listRoles", roleServices.getAllRoles());
+        model.addAttribute("newUser", new User());
+        return "index";
     }
+    @PostMapping("/saveOrUpdateUser")
+    public String saveUser(@Valid @ModelAttribute("user") User user
+            , @RequestParam("selectedRoles") List<Long> selectRoles
+            , BindingResult result) {
 
-    @GetMapping("/new")
-    public String getCreateNewUserForm(Model model) {
-        model.addAttribute("user", new User());
-        model.addAttribute("allRoles", roleServices.getAllRoles());
-        return "admin/new_user";
-    }
-
-    @PostMapping(value = "/")
-    public String add(@Valid @ModelAttribute("user") User user, BindingResult bindingResult
-            , Model model, @RequestParam(value = "ids", required = false) List<Long> ids) {
-
-        Set<Role> assignedRole = roleServices.findAllRoleId(ids);
-        user.setRoles(assignedRole);
-
-        userServices.saveUser(user);
+        if (!result.hasErrors()) {
+            Set<Role> rolesByArrayIds = roleServices.findAllRoleId(selectRoles);
+            userServices.addOrUpdateUser(user, rolesByArrayIds);
+        }
         return "redirect:/admin";
-
-
     }
 
-    @GetMapping("/deleteUser")
-    public String removeUser(@RequestParam("id") int id) {
+    @PostMapping("/delete")
+    public String deleteUser(@RequestParam("id") Long id) {
         userServices.deleteUser(id);
-        return "redirect:/admin";
-    }
-
-    @GetMapping("/updateUser")
-    public String getEditUserForm(Model model, @RequestParam("id") int id) {
-        model.addAttribute("user", userServices.getUser(id));
-        model.addAttribute("allRoles", roleServices.getAllRoles());
-        return "admin/edit_user";
-    }
-
-    @PostMapping("/edit")
-    public String update(@Valid @ModelAttribute("user") User user, BindingResult bindingResult
-            , Model model, @RequestParam(value = "ids", required = false) List<Long> ids) {
-
-        Set<Role> assignedRole = roleServices.findAllRoleId(ids);
-        user.setRoles(assignedRole);
-        userServices.updateUser(user);
         return "redirect:/admin";
     }
 }

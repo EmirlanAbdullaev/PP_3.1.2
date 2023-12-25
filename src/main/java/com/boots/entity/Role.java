@@ -13,7 +13,7 @@ public class Role implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
     private Long id;
-    private String name;
+    private String role;
     @Transient
     private Set<User> users;
 
@@ -21,7 +21,7 @@ public class Role implements GrantedAuthority {
     }
 
     public Role( String name) {
-        this.name = name;
+        this.role = name;
     }
 
     public Long getId() {
@@ -32,12 +32,12 @@ public class Role implements GrantedAuthority {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getRole() {
+        return role;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRole(String name) {
+        this.role = name;
     }
 
     public Set<User> getUsers() {
@@ -50,14 +50,14 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        return getName();
+        return getRole();
     }
 
     @Override
     public String toString() {
         return "Role{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + role + '\'' +
                 ", users=" + users +
                 '}';
     }
@@ -67,11 +67,11 @@ public class Role implements GrantedAuthority {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Role role = (Role) o;
-        return Objects.equals(id, role.id) && Objects.equals(name, role.name) && Objects.equals(users, role.users);
+        return Objects.equals(id, role.id) && Objects.equals(role, role.role) && Objects.equals(users, role.users);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, users);
+        return Objects.hash(id, role, users);
     }
 }

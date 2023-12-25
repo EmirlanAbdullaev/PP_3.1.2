@@ -32,8 +32,8 @@ public class DateBaseInit {
         roleRepository.save(adminRole);
         roleRepository.save(userRole);
 
-        User userFirst = new User("admin",passwordEncoder.encode("100"),"Name1","LastName2","user@gmail.com");
-        User userSecond = new User("user",passwordEncoder.encode("100"),"Name1","LastName2","user@gmail.com");
+        User userFirst = new User(passwordEncoder.encode("100"),"Name1","LastName2","admin@gmail.com",(byte)21);
+        User userSecond = new User(passwordEncoder.encode("100"),"Name1","LastName2","user@gmail.com",(byte)22);
         userFirst.setRoles(Set.of(adminRole,userRole));
         userSecond.setRoles(Set.of(userRole));
 
