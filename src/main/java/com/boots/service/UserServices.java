@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Set;
 
 public interface UserServices extends UserDetailsService {
-    public void addOrUpdateUser(User user, Set<Role> roleSet);
+    public void addUser(User user, Set<Role> roleSet);
+    public void updateUser(User user, Set<Role> roleSet);
     public List<User> getUsersList();
 
     public User getUser(String name);
