@@ -35,24 +35,10 @@ public class User implements UserDetails {
     private String username;
     @Column(name = "age")
     private Byte age;
-    @Fetch(FetchMode.JOIN)
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "t_user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+
 
     public User() {
     }
-
-    public Byte getAge() {
-        return age;
-    }
-
-    public void setAge(Byte age) {
-        this.age = age;
-    }
-
     public User(String password, String firstName, String lastName, String email, Byte age) {
         this.password = password;
         this.firstName = firstName;
@@ -60,55 +46,59 @@ public class User implements UserDetails {
         this.username = email;
         this.age = age;
     }
+    @Fetch(FetchMode.JOIN)
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "t_user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+    public void setAge(Byte age) {
+        this.age = age;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setUsername(String email) {
+        this.username = email;
+    }
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
 
     public Long getId() {
         return id;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
-    public void setPassword(String password) {
-        this.password = password;
+    public Byte getAge() {
+        return age;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-
-    public void setUsername(String email) {
-        this.username = email;
     }
 
     public String getPasswordConfirm() {
         return passwordConfirm;
     }
 
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
-
     public Set<Role> getRoles() {
         return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
     }
 
     @Override
