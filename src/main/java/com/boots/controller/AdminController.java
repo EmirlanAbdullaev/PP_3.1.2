@@ -57,7 +57,7 @@ public class AdminController {
         return "redirect:/admin";
     }
     @PostMapping("/updateUser")
-    public String UpdateUser(@Valid @ModelAttribute("user") User user
+    public String updateUser(@Valid @ModelAttribute("user") User user
             , @RequestParam("selectedRoles") List<Long> selectRoles
             , BindingResult result) {
 
