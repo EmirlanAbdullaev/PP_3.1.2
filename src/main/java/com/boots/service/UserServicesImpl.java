@@ -45,10 +45,10 @@ public class UserServicesImpl implements UserServices {
     }
     @Override
     @Transactional
-    public void addUser(User user, Set<Role> roleSet) {
+    public User addUser(User user, Set<Role> roleSet) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles(roleSet);
-        userRepository.save(user);//auto check
+        return userRepository.save(user);
     }
 
     @Override
