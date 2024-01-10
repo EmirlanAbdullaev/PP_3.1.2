@@ -34,14 +34,17 @@ public class AdminController {
     }
 
     @GetMapping()
-    public ResponseEntity<Iterable<User>> getAllUsers() {
-        final List<User> userDtoList = userServices.getUsersList();
+    @CrossOrigin
+    public ResponseEntity<List<User>> showUsers() {
 
-        return userDtoList != null && !userDtoList.isEmpty()
-                ? new ResponseEntity<>(userDtoList, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(userServices.getUsersList(), HttpStatus.OK);
+    }
+    @GetMapping("/getRoles")
+    public List<Role> getRoles() {
+        return roleServices.getAllRoles();
     }
     @GetMapping("/authorizedUser")
+    @CrossOrigin
     public ResponseEntity<?> getAuthorizedUser() {
         UserDetails userDetails =
                 (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -49,18 +52,21 @@ public class AdminController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
     @PostMapping()
+    @CrossOrigin
     public ResponseEntity<User> create(@RequestBody User user){
 //        Set<Role> rolesByArrayIds = roleServices.findAllRoleId(selectRoles);,List<Long> selectRoles
         return new ResponseEntity<>(userServices.addUser(user,new HashSet<>()),HttpStatus.OK);
     }
 
     @PutMapping()
+    @CrossOrigin
     public ResponseEntity<List<User>> updateUser(@RequestBody User user){
         userServices.updateUser(user,new HashSet<>());
         return new ResponseEntity<>(userServices.getUsersList(), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin
     public HttpStatus deleteUser(@PathVariable Long id) {
         userServices.deleteUser(id);
         return HttpStatus.OK;
