@@ -40,8 +40,14 @@ public class AdminController {
         return new ResponseEntity<>(userServices.getUsersList(), HttpStatus.OK);
     }
     @GetMapping("/getRoles")
+    @CrossOrigin
     public List<Role> getRoles() {
         return roleServices.getAllRoles();
+    }
+    @GetMapping("/users/{id}")
+    @CrossOrigin
+    public ResponseEntity<User> showUser(@PathVariable("id") Long id) {
+        return new ResponseEntity<> (userServices.getUser(id), HttpStatus.OK);
     }
     @GetMapping("/authorizedUser")
     @CrossOrigin
@@ -53,16 +59,16 @@ public class AdminController {
     }
     @PostMapping()
     @CrossOrigin
-    public ResponseEntity<User> create(@RequestBody User user){
-//        Set<Role> rolesByArrayIds = roleServices.findAllRoleId(selectRoles);,List<Long> selectRoles
-        return new ResponseEntity<>(userServices.addUser(user,new HashSet<>()),HttpStatus.OK);
+    public ResponseEntity<Void> create(@RequestBody User user){
+        userServices.addUser(user);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping()
     @CrossOrigin
-    public ResponseEntity<List<User>> updateUser(@RequestBody User user){
-        userServices.updateUser(user,new HashSet<>());
-        return new ResponseEntity<>(userServices.getUsersList(), HttpStatus.OK);
+    public ResponseEntity<Void> updateUser(@RequestBody User user){
+        userServices.updateUser(user);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

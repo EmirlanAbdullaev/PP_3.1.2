@@ -40,8 +40,7 @@
                             aria-controls="v-pills-admin"
                             aria-selected="true"
 
-                    >Admin
-                    </button>
+                    >Admin</button>
                     <button class="nav-link"
                             id="v-pills-user-tab"
                             data-bs-toggle="pill"
@@ -49,8 +48,7 @@
                             type="button" role="tab"
                             aria-controls="v-pills-user"
                             aria-selected="false"
-                    >User
-                    </button>
+                    >User</button>
                 </div>
             </div>
             <div class="col-md-10" style="background-color: #F7F7F7">
@@ -67,18 +65,14 @@
                             <ul class="nav nav-tabs" id="Admin_panel-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active" id="user_table-tab" data-bs-toggle="tab"
-                                            data-bs-target="#user_table" type="button" role="tab"
-                                            aria-controls="user_table"
+                                            data-bs-target="#user_table" type="button" role="tab" aria-controls="user_table"
                                             aria-selected="true"
-                                    > User table
-                                    </button>
+                                    > User table </button>
                                 </li>
                                 <!-- Кнопка New User -->
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="new_user-tab" data-bs-toggle="tab"
-                                            data-bs-target="#new_user"
-                                            type="button" role="tab" aria-controls="new_user" aria-selected="false">New
-                                        user
+                                    <button class="nav-link" id="new_user-tab" data-bs-toggle="tab" data-bs-target="#new_user"
+                                            type="button" role="tab" aria-controls="new_user" aria-selected="false">New user
                                     </button>
                                 </li>
                             </ul>
@@ -119,52 +113,39 @@
                                                 <!-- Скрипт createUsrerPage -->
                                                 <form id="formForNewUser">
                                                     <div class="mb-3">
-                                                        <label for="firstName"
-                                                               class="form-label d-flex justify-content-center"><b>First
-                                                            Name</b></label>
-                                                        <input type="text" class="form-control"
-                                                               id="firstName" name="firstname"
-                                                               aria-describedby="emailHelp">
+                                                        <label for="username" class="form-label d-flex justify-content-center"><b>First Name</b></label>
+                                                        <input type="text"  class="form-control"
+                                                               id="username" name="firstname" aria-describedby="emailHelp">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="lastName"
-                                                               class="form-label d-flex justify-content-center"><b>Last
-                                                            Name</b></label>
-                                                        <input type="text" class="form-control"
-                                                               id="lastName" name="lastName"
-                                                               aria-describedby="emailHelp">
+                                                        <label for="lastName" class="form-label d-flex justify-content-center"><b>Last Name</b></label>
+                                                        <input type="text"  class="form-control"
+                                                               id="lastName" name="lastName" aria-describedby="emailHelp">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="age"
-                                                               class="form-label d-flex justify-content-center"><b>Age</b></label>
-                                                        <input type="number" class="form-control"
+                                                        <label for="age" class="form-label d-flex justify-content-center"><b>Age</b></label>
+                                                        <input type="number"  class="form-control"
                                                                id="age" name="age" aria-describedby="emailHelp">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="email"
-                                                               class="form-label d-flex justify-content-center"><b>Email
-                                                            address</b></label>
-                                                        <input type="email" class="form-control" id="email"
+                                                        <label for="email" class="form-label d-flex justify-content-center"><b>Email address</b></label>
+                                                        <input type="email"  class="form-control" id="email"
                                                                aria-describedby="emailHelp" name="email">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="password"
-                                                               class="form-label d-flex justify-content-center"><b>Password</b></label>
-                                                        <input type="password" class="form-control"
+                                                        <label for="password" class="form-label d-flex justify-content-center"><b>Password</b></label>
+                                                        <input type="password"  class="form-control"
                                                                id="password" name="password">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label d-flex justify-content-center"><b>Role
                                                         </b></label>
-                                                        <select id="roles" multiple class="form-select" size="3"
-                                                                aria-label="size 2 select example">
+                                                        <select id="roles" multiple class="form-select" size="3" aria-label="size 2 select example">
 
                                                         </select>
                                                     </div>
                                                     <div class="mb-3 d-flex justify-content-center">
-                                                        <button type="submit" class="btn btn-success"
-                                                                id="closeCreateButton">Add new user
-                                                        </button>
+                                                        <button type="submit" class="btn btn-success" id="closeCreateButton">Add new user</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -223,7 +204,7 @@
                                 <!-- Поля в окне Edit, они связываются в скрипте editModalPage -->
 
                                 <div class="mb-3">
-                                    <label for="edit-id" class="col-form-label d-flex justify-content-center"><b>ID</b>:</label>
+                                    <label for="edit-id"class="col-form-label d-flex justify-content-center" ><b>ID</b>:</label>
                                     <input disabled type="text"
                                            class="form-control"
                                            id="edit-id"
@@ -231,8 +212,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="edit-first_name"
-                                           class="col-form-label d-flex justify-content-center"><b>First
-                                        Name</b>:</label>
+                                           class="col-form-label d-flex justify-content-center"><b>First Name</b>:</label>
                                     <input type="text"
                                            class="form-control"
                                            id="edit-first_name"
@@ -240,8 +220,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="edit-last_name"
-                                           class="col-form-label d-flex justify-content-center"><b>Last
-                                        Name</b>:</label>
+                                           class="col-form-label d-flex justify-content-center"><b>Last Name</b>:</label>
                                     <input type="text"
                                            class="form-control"
                                            id="edit-last_name"
@@ -292,12 +271,9 @@
 
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="editClose">
-                                Close
-                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="editClose">Close</button>
                             <button type="button" class="btn btn-primary" id="editBtn"
-                                    onclick="editUser(); getAdminPage()">Edit
-                            </button>
+                                    onclick="editUser(); getAdminPage()">Edit</button>
                         </div>
 
 
@@ -324,7 +300,7 @@
 
                                 <div class="mb-3">
                                     <label for="id_del"
-                                           class="col-form-label d-flex justify-content-center"><b>ID</b>:</label>
+                                           class="col-form-label d-flex justify-content-center" ><b>ID</b>:</label>
                                     <input disabled type="text"
                                            class="form-control"
                                            id="id_del"
@@ -332,18 +308,16 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="name_del"
-                                           class="col-form-label d-flex justify-content-center"><b>First
-                                        Name</b>:</label>
-                                    <input readonly type="text"
+                                           class="col-form-label d-flex justify-content-center"><b>First Name</b>:</label>
+                                    <input readonly  type="text"
                                            class="form-control"
                                            id="name_del"
                                            name="username">
                                 </div>
                                 <div class="mb-3">
                                     <label for="lastName_del"
-                                           class="col-form-label d-flex justify-content-center"><b>Last
-                                        Name</b>:</label>
-                                    <input readonly type="text"
+                                           class="col-form-label d-flex justify-content-center"><b>Last Name</b>:</label>
+                                    <input readonly  type="text"
                                            class="form-control"
                                            id="lastName_del"
                                            name="lastName">
@@ -351,7 +325,7 @@
                                 <div class="mb-3">
                                     <label for="age_del"
                                            class="col-form-label d-flex justify-content-center"><b>Age</b>:</label>
-                                    <input readonly type="number"
+                                    <input readonly  type="number"
                                            class="form-control"
                                            id="age_del"
                                            name="age">
@@ -375,12 +349,9 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeDelete">
-                                Close
-                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeDelete">Close</button>
                             <button type="button" class="btn btn-primary" id="deleteBtn"
-                                    onclick="deleteUser(); getAdminPage()">Delete
-                            </button>
+                                    onclick="deleteUser(); getAdminPage()">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -391,340 +362,14 @@
 </div>
 
 
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-
-<script>
-    const adminurl = 'http://localhost:8080/rest';
-
-    const currentUser = fetch('http://localhost:8080/rest/authorizedUser').then(response => response.json())
-    currentUser.then(user => {
-            console.log(user)
-            console.log(user[3].roles)
-            let roles = ''
-            user.roles.forEach(role => {
-                roles += ' '
-                roles += role.role
-            })
-            document.getElementById("navbar-username").innerHTML = user.username
-            document.getElementById("navbar-roles").innerHTML = roles
-        }
-    )
-
-    async function getAdminPage() {
-        let page = await fetch(adminurl);
-
-        if (page.ok) {
-            let listAllUser = await page.json();
-            loadTableData(listAllUser);
-        } else {
-            alert(`Error, ${page.status}`)
-        }
-    }
-
-    function loadTableData(listAllUser) {
-        const tableBody = document.getElementById('admintbody');
-        let dataHtml = '';
-        for (let user of listAllUser) {
-            let roles = [];
-            for (let role of user.roles) {
-                if (role.role) {
-                    roles.push(" " + role.role.toString()
-                        .replaceAll("ROLE_", ""));
-                }
-            }
-            dataHtml +=
-                `<tr>
-    <td>${user.id}</td>
-    <td>${user.firstName}</td>
-    <td>${user.lastName}</td>
-    <td>${user.age}</td>
-    <td>${user.username}</td>
-    <td>${roles}</td>
-    <td>
-        <button type="button" class="btn btn-primary" data-bs-toogle="modal"
-        data-bs-target="#editModal"
-        onclick="loadDataForEditModal(${user.id})">Edit</button>
-    </td>
-
-    <td>
-        <button class="btn btn-danger" data-bs-toogle="modal"
-        data-bs-target="#deleteModal"
-        onclick="deleteModalData(${user.id})">Delete</button>
-    </td>
-
-</tr>`
-        }
-        tableBody.innerHTML = dataHtml;
-    }
-
-    getAdminPage();
-    getUserPage();
-</script>
-
-
-<script>
-    const form_new = document.getElementById('formForNewUser');
-    const create_btn = document.getElementById('closeCreateButton');
-    const user_table_tab = document.getElementById('user_table-tab');
-    const rolesSelect = document.querySelector('#roles');
-    form_new.addEventListener('submit', addNewUser);
-
-    async function addNewUser(event) {
-        event.preventDefault();
-        const urlNew = 'http://localhost:8080/rest';
-
-        let listOfRole = [];
-        for (let i = 0; i < rolesSelect.selectedOptions.length; i++) {
-            listOfRole.push({
-                id: rolesSelect.selectedOptions[i].value
-            });
-        }
-        let method = {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                firstName: form_new.firstName.value,
-                lastName: form_new.lastName.value,
-                age: form_new.age.value,
-                username: form_new.email.value,
-                password: form_new.password.value,
-                roles: listOfRole
-            })
-        };
-        console.log(method.body)
-
-        try {
-            const response = await fetch(urlNew, method);
-            if (!response.ok) {
-                throw new Error(`Server returned ${response.status} ${response.statusText}`);
-            }
-
-            form_new.reset();
-
-            getAdminPage();
-
-            user_table_tab.click();
-
-            var triggerTabList = [].slice.call(document.querySelectorAll('#Admin_panel-tab a'))
-            triggerTabList.forEach(function (triggerEl) {
-                var tabTrigger = new bootstrap.Tab(triggerEl)
-
-                triggerEl.addEventListener('click', function (event) {
-                    event.preventDefault()
-                    tabTrigger.show()
-                })
-            })
-            var triggerEl = document.querySelector('#Admin_panel-tab a[href="#user_table"]');
-            if (triggerEl) {
-                var tabInstance = bootstrap.Tab.getInstance(triggerEl);
-                if (tabInstance) {
-                    tabInstance.show();
-                }
-            }
-        } catch (error) {
-            console.error('Произошла ошибка при выполнении запроса:', error.message);
-        }
-    }
-
-    const rolesElement = document.getElementById('roles');
-
-
-    async function getRoles() {
-        try {
-            const response = await fetch('http://localhost:8080/rest/getRoles');
-            if (!response.ok) {
-                throw new Error(`Server returned ${response.status} ${response.statusText}`);
-            }
-
-            const roles = await response.json();
-
-            rolesElement.innerHTML = '';
-
-            roles.forEach(role => {
-                const option = document.createElement('option');
-                option.value = role.id;
-                option.text = role.role;
-                rolesElement.appendChild(option);
-            });
-        } catch (error) {
-            console.error('Произошла ошибка при получении ролей:', error.message);
-        }
-    }
-
-    getRoles();
-</script>
-<script>
-    const role_ed = document.getElementById('edit-role');
-    const form_ed = document.getElementById('formForEditing');
-    const id_ed = document.getElementById('edit-id');
-    const name_ed = document.getElementById('edit-first_name');
-    const lastName_ed = document.getElementById('edit-last_name')
-    const age_ed = document.getElementById('edit-age')
-    const email_ed = document.getElementById('edit-email');
-    const editModal = document.getElementById("editModal");
-    const closeEditButton = document.getElementById("editClose")
-    const bsEditModal = new bootstrap.Modal(editModal);
-
-    async function loadDataForEditModal(id) {
-        const urlDataEd = 'http://localhost:8080/rest/users/' + id;
-        let usersPageEd = await fetch(urlDataEd);
-        if (usersPageEd.ok) {
-
-            await usersPageEd.json().then(user => {
-                console.log('userData', JSON.stringify(user))
-                id_ed.value = `${user.id}`;
-                name_ed.value = `${user.firstName}`;
-                lastName_ed.value = `${user.lastName}`;
-                age_ed.value = `${user.age}`;
-                email_ed.value = `${user.username}`;
-
-                const roleIds = user.roles.map(role => Number(role.id));
-                for (const option of role_ed.options) {
-                    if (roleIds.includes(Number(option.value))) {
-                        option.removeAttribute('selected');
-                    } else {
-                        option.setAttribute('selected', 'selected');
-                    }
-                }
-            })
-            console.log("id_ed: " + id_ed.value + " !!")
-            bsEditModal.show();
-        } else {
-            alert(`Error, ${usersPageEd.status}`)
-        }
-    }
-
-    async function editUser() {
-        let urlEdit = 'http://localhost:8080/rest/';
-        let listOfRole = [];
-        console.dir(form_ed)
-        for (let i = 0; i < form_ed.roles.options.length; i++) {
-            if (!form_ed.roles.options[i].selected) {
-                let tmp = {};
-                tmp["id"] = form_ed.roles.options[i].value
-                listOfRole.push(tmp);
-            }
-        }
-        let method = {
-            method: 'PUT',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                id: id_ed.value,
-                firstName: form_ed.username.value,
-                lastName: form_ed.lastName.value,
-                age: form_ed.age.value,
-                username: form_ed.email.value,
-                password: form_ed.password.value,
-                roles: listOfRole
-            })
-        }
-        console.log(urlEdit, method)
-        await fetch(urlEdit, method).then(() => {
-            closeEditButton.click();
-            getAdminPage();
-        })
-    }
-
-</script>
-<script>
-
-    const id_del = document.getElementById('id_del');
-    const name_del = document.getElementById('name_del');
-    const lastName_del = document.getElementById("lastName_del")
-    const age_del = document.getElementById("age_del")
-    const email_del = document.getElementById('email_del');
-    const role_del = document.getElementById("delete-role")
-    const deleteModal = document.getElementById("deleteModal");
-    const closeDeleteButton = document.getElementById("closeDelete")
-    const bsDeleteModal = new bootstrap.Modal(deleteModal);
-
-    async function deleteModalData(id) {
-        const  urlForDel = 'http://localhost:8080/rest/users/' + id;
-        let usersPageDel = await fetch(urlForDel);
-        if (usersPageDel.ok) {
-            let userData =
-                await usersPageDel.json().then(user => {
-                    id_del.value = `${user.id}`;
-                    name_del.value = `${user.firstName}`;
-                    lastName_del.value = `${user.lastName}`;
-                    age_del.value = `${user.age}`;
-                    email_del.value = `${user.username}`;
-                    role_del.value = user.roles.map(r=>r.role).join(", ");
-                })
-
-            bsDeleteModal.show();
-        } else {
-            alert(`Error, ${usersPageDel.status}`)
-        }
-    }
-    async function deleteUser() {
-        let urlDel = 'http://localhost:8080/rest/' + id_del.value;
-        let method = {
-            method: 'DELETE',
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }
-
-        fetch(urlDel, method).then(() => {
-            closeDeleteButton.click();
-            getAdminPage();
-        })
-    }
-</script>
-<script>
-    const userurl = '/user';
-
-    const authUser = fetch(userurl).then(response => response.json())
-    authUser.then(user => {
-            let roles = ''
-            user.roles.forEach(role => {
-                roles += ' '
-                roles += role.name
-            })
-            document.getElementById("navbar-username").innerHTML = user.username
-            document.getElementById("navbar-roles").innerHTML = roles
-        }
-    )
-
-    async function getUserPage() {
-        let page = await fetch(userurl);
-
-        if(page.ok) {
-            let user = await  page.json();
-            getInformationAboutUser(user);
-        } else {
-            alert(`Error, ${page.status}`)
-        }
-    }
-    function  getInformationAboutUser(user) {
-        const tableBody = document.getElementById('usertbody');
-        let dataHtml = '';
-        let roles = [];
-        console.log('userSata', JSON.stringify(user))
-        for (let role of user.roles) {roles
-            roles.push(" " + role.name.toString()
-                .replaceAll("ROLE_", ""))
-        }
-        dataHtml =
-            `<tr>
-    <td>${user.id}</td>
-    <td>${user.firstName}</td>
-    <td>${user.lastName}</td>
-    <td>${user.age}</td>
-    <td>${user.username}</td>
-    <td>${roles}</td>
-</tr>`
-
-        tableBody.innerHTML = dataHtml;
-    }
-    getUserPage();
-</script>
+<script src="/static/userJs/userPage.js"></script>
+<script src="/static/adminJs/adminPage.js"></script>
+<script src="/static/adminJs/createUserPage.js"></script>
+<script src="/static/adminJs/editModalPage.js"></script>
+<script src="/static/adminJs/deleteModalPage.js"></script>
 </body>
 </html>

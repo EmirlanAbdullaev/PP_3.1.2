@@ -8,10 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "t_user")
@@ -35,23 +32,24 @@ public class User implements UserDetails {
     private String username;
     @Column(name = "age")
     private Byte age;
-
-
-    public User() {
-    }
-    public User(String password, String firstName, String lastName, String email, Byte age) {
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = email;
-        this.age = age;
-    }
-    @Fetch(FetchMode.JOIN)
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "t_user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    public User() {
+    }
+    public User(String password, String firstName, String lastName, String email, Byte age,Set<Role> roles) {
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = email;
+        this.age = age;
+        this.roles=roles;
+    }
+
+
     public void setAge(Byte age) {
         this.age = age;
     }

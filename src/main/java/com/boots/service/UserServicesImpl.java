@@ -4,6 +4,7 @@ import com.boots.entity.Role;
 import com.boots.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -45,18 +46,16 @@ public class UserServicesImpl implements UserServices {
     }
     @Override
     @Transactional
-    public User addUser(User user, Set<Role> roleSet) {
+    public User addUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRoles(roleSet);
         return userRepository.save(user);
     }
 
     @Override
     @Transactional
-    public void updateUser(User user, Set<Role> roleSet) {
+    public void updateUser(User user) {
         if (null != userRepository.findByUsername(user.getUsername())) {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-            user.setRoles(roleSet);
             userRepository.save(user);
         }
     }
@@ -73,13 +72,17 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public User getUser(long id) {
-        return userRepository.getOne(id);
+        return userRepository.findById(id).get();
     }
 
     @Transactional
     @Override
     public void deleteUser(long id) {
         userRepository.deleteById(id);
+    }
+    @Override
+    public User getCurrentUser() {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
 
