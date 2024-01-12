@@ -32,6 +32,7 @@ public class User implements UserDetails {
     private String username;
     @Column(name = "age")
     private Byte age;
+    @Fetch(FetchMode.JOIN)
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "t_user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
